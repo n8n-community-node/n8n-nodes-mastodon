@@ -8,7 +8,7 @@ export const statusOperations: INodeProperties[] = [
 		noDataExpression: true,
 		displayOptions: {
 			show: {
-				resource: ['status'],
+				resource: ['statuses'],
 			},
 		},
 		options: [
@@ -63,7 +63,7 @@ export const statusFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				operation: ['create'],
-				resource: ['status'],
+				resource: ['statuses'],
 			},
 		},
 		description:
@@ -78,7 +78,7 @@ export const statusFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				operation: ['create'],
-				resource: ['status'],
+				resource: ['statuses'],
 			},
 		},
 		options: [
@@ -160,7 +160,7 @@ export const statusFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				operation: ['delete'],
-				resource: ['status'],
+				resource: ['statuses'],
 			},
 		},
 		description: 'The ID of the status to delete',
@@ -181,7 +181,7 @@ export const statusFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				operation: ['search'],
-				resource: ['status'],
+				resource: ['statuses'],
 			},
 		},
 		description:
@@ -194,7 +194,7 @@ export const statusFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				operation: ['search'],
-				resource: ['status'],
+				resource: ['statuses'],
 			},
 		},
 		default: false,
@@ -207,7 +207,7 @@ export const statusFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				operation: ['search'],
-				resource: ['status'],
+				resource: ['statuses'],
 				returnAll: [false],
 			},
 		},
@@ -226,7 +226,7 @@ export const statusFields: INodeProperties[] = [
 	// 	displayOptions: {
 	// 		show: {
 	// 			operation: ['search'],
-	// 			resource: ['status'],
+	// 			resource: ['statuses'],
 	// 		},
 	// 	},
 	// 	options: [
@@ -373,7 +373,7 @@ export const statusFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				operation: ['like'],
-				resource: ['status'],
+				resource: ['statuses'],
 			},
 		},
 		description: 'The ID of the status',
@@ -413,7 +413,7 @@ export const statusFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				operation: ['boost'],
-				resource: ['status'],
+				resource: ['statuses'],
 			},
 		},
 		description: 'The ID of the status',

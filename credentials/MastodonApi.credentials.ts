@@ -1,9 +1,9 @@
 import { ICredentialType, INodeProperties } from 'n8n-workflow';
 
 export class MastodonApi implements ICredentialType {
-	name = 'MastodonApi';
+	name = 'mastodonApi';
 	extends = ['oAuth2Api'];
-	displayName = 'Mastodon OAuth API';
+	displayName = 'Mastodon OAuth2 API';
 	documentationUrl = 'mastodon';
 	properties: INodeProperties[] = [
 		{
@@ -11,12 +11,6 @@ export class MastodonApi implements ICredentialType {
 			name: 'grantType',
 			type: 'hidden',
 			default: 'authorizationCode',
-		},
-		{
-			displayName: 'Mastodon URL',
-			name: 'url',
-			type: 'string',
-			default: 'https://mastodon.example',
 		},
 		{
 			displayName: 'Authorization URL',
