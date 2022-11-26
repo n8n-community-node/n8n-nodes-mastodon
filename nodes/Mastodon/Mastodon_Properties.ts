@@ -40,6 +40,12 @@ export const properties = {
 		},
 		options: [
 			{
+				name: 'Boost',
+				value: 'boost',
+				description: 'Boost a status',
+				action: 'Boost a status',
+			},
+			{
 				name: 'Create',
 				value: 'create',
 				description: 'Publish new status',
@@ -56,12 +62,6 @@ export const properties = {
 				value: 'favourite',
 				description: 'Favourite a status',
 				action: 'Favourite a status',
-			},
-			{
-				name: 'Boost',
-				value: 'boost',
-				description: 'Boost a status',
-				action: 'Boost a status',
 			},
 			{
 				name: 'Search',
@@ -198,7 +198,7 @@ export const properties = {
 			typeOptions: {
 				minValue: 1,
 			},
-			default: 20,
+			default: 50,
 			description: 'Max number of results to return',
 		} as INodeProperties,
 	],

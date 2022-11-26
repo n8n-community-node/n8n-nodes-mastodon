@@ -1,7 +1,7 @@
 {
   "name": "n8n-nodes-mastodon",
-  "version": "0.1.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "Mastodon is a decentralized, open-source software that allows users to set up servers to communicate with each other.",
   "keywords": [
     "n8n-community-node-package"
   ],
@@ -30,7 +30,7 @@
   "n8n": {
     "n8nNodesApiVersion": 1,
     "credentials": [
-      "dist/credentials/Mastodon.credentials.js"
+      "dist/credentials/MastodonOAuth2Api.credentials.js"
     ],
     "nodes": [
       "dist/nodes/Mastodon/Mastodon.node.js"

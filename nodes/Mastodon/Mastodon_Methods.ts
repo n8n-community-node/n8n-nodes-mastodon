@@ -1,4 +1,4 @@
-import { IBinaryKeyData, IDataObject, IExecuteFunctions, INodeExecutionData, JsonObject, NodeApiError, NodeOperationError, sleep } from "n8n-workflow";
+import { IBinaryKeyData, IDataObject, IExecuteFunctions, INodeExecutionData, JsonObject, NodeApiError, NodeExecutionWithMetadata, NodeOperationError, sleep } from "n8n-workflow";
 import { OptionsWithUrl } from "request-promise-native";
 import { IStatus } from "./StatusInterface";
 import { LoggerProxy as Logger } from "n8n-workflow";
@@ -6,7 +6,7 @@ import { LoggerProxy as Logger } from "n8n-workflow";
 export const methods = {
 
 	// ------------------------------------------------------------------
-	execute: async function execute(this: IExecuteFunctions, items: INodeExecutionData[], i: number): Promise<any> {
+	execute: async function execute(this: IExecuteFunctions, items: INodeExecutionData[], i: number): Promise<NodeExecutionWithMetadata[]> {
 
 		const url = this.getNodeParameter('url', 0) as string;
 		const resource = this.getNodeParameter('resource', 0) as string;
@@ -39,7 +39,7 @@ export const methods = {
 					json: {
 						error: (error as JsonObject).message,
 					},
-				};
+				} as unknown as NodeExecutionWithMetadata[];
 				return executionErrorData;
 			}
 			throw error;
@@ -49,6 +49,7 @@ export const methods = {
 	// ------------------------------------------------------------------
 	create: async function create(this: IExecuteFunctions, baseUrl: string, items: INodeExecutionData[], i: number) {
 		const text = this.getNodeParameter('text', i) as string;
+		// tslint:disable-next-line:no-any
 		const additionalFields = this.getNodeParameter('additionalFields', i) as any;
 		const body: IStatus = {
 			status: text,
@@ -152,9 +153,11 @@ async function mastodonApiRequest(
 	this: IExecuteFunctions,
 	method: string,
 	endpoint: string,
+	// tslint:disable-next-line:no-any
 	body: any = {},
 	qs: IDataObject = {},
 	option: IDataObject = {},
+// tslint:disable-next-line:no-any
 ): Promise<any> {
 
 	let options: OptionsWithUrl = {
@@ -177,13 +180,13 @@ async function mastodonApiRequest(
 		}
 
 		Logger.debug(`[Mastodon] request: ${JSON.stringify(options)}`);
-		let responseData = await this.helpers.requestOAuth2.call(this, 'mastodonApi', options);
+		const responseData = await this.helpers.requestOAuth2.call(this, 'mastodonOAuth2Api', options);
 		Logger.debug(`[Mastodon] response: ${JSON.stringify(responseData)}`);
 		return responseData;
 	} catch (error) {
 		throw new NodeApiError(this.getNode(), error);
 	}
-};
+}
 
 // ------------------------------------------------------------------
 async function mastodonApiRequestAllItems(
@@ -191,8 +194,10 @@ async function mastodonApiRequestAllItems(
 	propertyName: string,
 	method: string,
 	endpoint: string,
+	// tslint:disable-next-line:no-any
 	body: any = {},
 	query: IDataObject = {},
+// tslint:disable-next-line:no-any
 ): Promise<any> {
 
 	const returnData: IDataObject[] = [];
@@ -205,7 +210,7 @@ async function mastodonApiRequestAllItems(
 	} while (responseData.search_metadata && responseData.search_metadata.next_results);
 
 	return returnData;
-};
+}
 
 // ------------------------------------------------------------------
 async function uploadAttachments(
@@ -236,35 +241,35 @@ async function uploadAttachments(
 
 		const binaryData = binaryKeyData[binaryPropertyName];
 		const buffer = await this.helpers.getBinaryDataBuffer(i, binaryPropertyName);
-		var file = {
+		const file = {
 			value: buffer,
 			options: {
 				filename: binaryData.fileName,
 				contentType: binaryData.mimeType,
 				mimeType: binaryData.mimeType,
 			},
-		}
-		let attachmentBody = { file: file };
-		let response: IDataObject = await mastodonApiRequest.call(this, 'POST', uploadUrl, {}, {}, {
+		};
+		const attachmentBody = { file };
+		const response: IDataObject = await mastodonApiRequest.call(this, 'POST', uploadUrl, {}, {}, {
 			formData: attachmentBody,
 		});
 		Logger.debug(`[Mastodon] uploadResponse: ${JSON.stringify(response)}`);
 
 
-		let response_url = response.url;
-		if (response_url == null) {
+		let responseUrl = response.url;
+		if (responseUrl == null) {
 			let attempts = 0;
 			const mediaStatusUrl = `${url}/api/v1/media/${response.id}`;
 
-			while (response_url == null && attempts < 10) {
+			while (responseUrl == null && attempts < 10) {
 				await sleep(5000);
 				Logger.debug(`[Mastodon] uploadStatusUrl: ${mediaStatusUrl}`);
-				let getStatusResponse = await mastodonApiRequest.call(this, 'GET', mediaStatusUrl, {}, {}, {});
+				const getStatusResponse = await mastodonApiRequest.call(this, 'GET', mediaStatusUrl, {}, {}, {});
 				Logger.debug(`[Mastodon] uploadStatusResponse: ${JSON.stringify(getStatusResponse)}`);
-				response_url = getStatusResponse.url;
+				responseUrl = getStatusResponse.url;
 				attempts++;
 			}
-			if (response_url == null) {
+			if (responseUrl == null) {
 				throw new NodeOperationError(
 					this.getNode(),
 					'Unable to upload media to Mastodon',
@@ -277,7 +282,8 @@ async function uploadAttachments(
 	}
 }
 
-function getExecutionData(this: IExecuteFunctions, responseData: any, i: number) {
+// tslint:disable-next-line:no-any
+function getExecutionData(this: IExecuteFunctions, responseData: any, i: number): NodeExecutionWithMetadata[] {
 	return this.helpers.constructExecutionMetaData(
 		this.helpers.returnJsonArray(responseData),
 		{ itemData: { item: i } },

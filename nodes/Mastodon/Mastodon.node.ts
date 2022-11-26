@@ -1,11 +1,27 @@
 import { IExecuteFunctions, INodeExecutionData, INodeType, INodeTypeDescription } from 'n8n-workflow';
-import { header } from './Mastodon.Header';
-import { properties } from './Mastodon.Properties';
-import { methods } from './Mastodon.Methods';
+import { properties } from './Mastodon_Properties';
+import { methods } from './Mastodon_Methods';
 
 export class Mastodon implements INodeType {
 	description: INodeTypeDescription = {
-		...header,
+		displayName: 'Mastodon',
+		name: 'mastodon',
+		icon: 'file:Mastodon.svg',
+		group: ['transform'],
+		version: 1,
+		subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
+		description: 'Consume Mastodon API',
+		defaults: {
+			name: 'Mastodon',
+		},
+		inputs: ['main'],
+		outputs: ['main'],
+		credentials: [
+			{
+				name: 'mastodonOAuth2Api',
+				required: false,
+			},
+		],
 		properties: [
 			properties.url,
 			properties.resources,
