@@ -20,11 +20,11 @@ export class Mastodon implements INodeType {
 
 	async execute(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
 		const items = this.getInputData();
-        const returnData: INodeExecutionData[] = [];
-        for (let i = 0; i < items.length; i++) {
+		const returnData: INodeExecutionData[] = [];
+		for (let i = 0; i < items.length; i++) {
 			const executionData = await methods.execute.call(this, items, i);
 			returnData.push(...executionData);
-        }
+		}
 		return this.prepareOutputData(returnData);
 	}
 }
