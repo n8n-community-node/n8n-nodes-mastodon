@@ -21,14 +21,16 @@ export class MastodonApi implements ICredentialType {
 					grantType: ['authorizationCode'],
 				},
 			},
-			default: 'https://mastodon.example/oauth/authorize',
+			default: '',
+			placeholder: 'https://mastodon.social/oauth/authorize',
 			required: true,
 		},
 		{
 			displayName: 'Access Token URL',
 			name: 'accessTokenUrl',
 			type: 'string',
-			default: 'https://mastodon.example/oauth/token',
+			default: '',
+			placeholder: 'https://mastodon.social/oauth/token',
 			required: true,
 		},
 		{
@@ -36,6 +38,7 @@ export class MastodonApi implements ICredentialType {
 			name: 'clientId',
 			type: 'string',
 			default: '',
+			placeholder: 'AqFq3P2l_ptqshFjdFb_zcBc0Lti8o-eh6cmrTYF28g',
 			required: true,
 		},
 		{
@@ -46,6 +49,7 @@ export class MastodonApi implements ICredentialType {
 				password: true,
 			},
 			default: '',
+			placeholder: 'CSryO36btT-jRtMZFBXulbQL2ezIM0aE7samRHoZsn0',
 			required: true,
 		},
 		{

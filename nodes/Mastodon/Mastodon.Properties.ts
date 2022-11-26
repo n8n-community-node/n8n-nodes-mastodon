@@ -20,11 +20,11 @@ export const properties = {
         noDataExpression: true,
         options: [
             {
-                name: 'Statuses',
-                value: 'statuses',
+                name: 'Status',
+                value: 'status',
             },
         ],
-        default: 'statuses',
+        default: 'status',
     } as INodeProperties,
 
     // ------------------------------------------------------------------
@@ -35,7 +35,7 @@ export const properties = {
         noDataExpression: true,
         displayOptions: {
             show: {
-                resource: ['statuses'],
+                resource: ['status'],
             },
         },
         options: [
@@ -87,7 +87,7 @@ export const properties = {
             displayOptions: {
                 show: {
                     operation: ['create'],
-                    resource: ['statuses'],
+                    resource: ['status'],
                 },
             },
             description:
@@ -102,7 +102,7 @@ export const properties = {
             displayOptions: {
                 show: {
                     operation: ['create'],
-                    resource: ['statuses'],
+                    resource: ['status'],
                 },
             },
             options: [
@@ -144,7 +144,7 @@ export const properties = {
             displayOptions: {
                 show: {
                     operation: ['delete'],
-                    resource: ['statuses'],
+                    resource: ['status'],
                 },
             },
             description: 'The ID of the status to delete',
@@ -165,7 +165,7 @@ export const properties = {
             displayOptions: {
                 show: {
                     operation: ['search'],
-                    resource: ['statuses'],
+                    resource: ['status'],
                 },
             },
             description:
@@ -178,7 +178,7 @@ export const properties = {
             displayOptions: {
                 show: {
                     operation: ['search'],
-                    resource: ['statuses'],
+                    resource: ['status'],
                 },
             },
             default: false,
@@ -191,7 +191,7 @@ export const properties = {
             displayOptions: {
                 show: {
                     operation: ['search'],
-                    resource: ['statuses'],
+                    resource: ['status'],
                     returnAll: [false],
                 },
             },
@@ -213,8 +213,8 @@ export const properties = {
             default: '',
             displayOptions: {
                 show: {
-                    operation: ['like'],
-                    resource: ['statuses'],
+                    operation: ['favourite'],
+                    resource: ['status'],
                 },
             },
             description: 'The ID of the status',
@@ -232,7 +232,7 @@ export const properties = {
             displayOptions: {
                 show: {
                     operation: ['boost'],
-                    resource: ['statuses'],
+                    resource: ['status'],
                 },
             },
             description: 'The ID of the status',
