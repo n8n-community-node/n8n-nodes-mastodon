@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-mastodon",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Mastodon is a decentralized, open-source software that allows users to set up servers to communicate with each other.",
   "keywords": [
     "n8n-community-node-package"
