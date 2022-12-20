@@ -59,6 +59,10 @@ export const methods = {
 			body.in_reply_to_id = additionalFields.inReplyToStatusId as string;
 		}
 
+		if (additionalFields.spoilerText) {
+			body.spoiler_text = additionalFields.spoilerText as string;
+		}
+
 		if (additionalFields.attachments) {
 			const attachments = additionalFields.attachments as string;
 
