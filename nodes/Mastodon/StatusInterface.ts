@@ -4,4 +4,5 @@ export interface IStatus {
 	status: string;
 	in_reply_to_id?: string;
 	spoiler_text?: string;
+	language?: string;
 }

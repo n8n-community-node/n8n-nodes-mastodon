@@ -63,6 +63,10 @@ export const methods = {
 			body.spoiler_text = additionalFields.spoilerText as string;
 		}
 
+		if (additionalFields.language) {
+			body.language = additionalFields.language as string;
+		}
+
 		if (additionalFields.attachments) {
 			const attachments = additionalFields.attachments as string;
 

@@ -137,6 +137,13 @@ export const properties = {
 					description:
 						'Text to be shown as a warning or subject before the actual content',
 				},
+				{
+					displayName: 'Language',
+					name: 'language',
+					type: 'string',
+					default: '',
+					description: 'The language of the status update',
+				},
 			],
 		} as INodeProperties,
 	],
