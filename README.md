@@ -2,8 +2,6 @@
 
 This is an n8n community node. It lets you use _Mastodon_ in your n8n workflows.
 
-If you like my work, please consider [sponsoring me](https://github.com/sponsors/etdofresh). Thank you! - ET
-
 _Mastodon_ is a decentralized, open-source software that allows users to set up servers to communicate with each other, is growing in popularity as a “Twitter alternative”.
 
 [n8n](https://n8n.io/) is a [fair-code licensed](https://docs.n8n.io/reference/license/) workflow automation platform.
