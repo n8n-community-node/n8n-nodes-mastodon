@@ -1,3 +1,6 @@
+# Fork from ETdoFresh/n8n-nodes-mastodon
+All credit goes to ET - this is keeping as close to original as possible, just with some added functionality we need for our mastodon instance.
+
 # n8n-nodes-mastodon
 
 This is an n8n community node. It lets you use _Mastodon_ in your n8n workflows.

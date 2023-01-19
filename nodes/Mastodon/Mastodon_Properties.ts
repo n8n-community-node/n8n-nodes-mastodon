@@ -129,6 +129,14 @@ export const properties = {
 					description:
 						'Whether you are uploading Tweet media that might be considered sensitive content such as nudity, or medical procedures',
 				},
+				{
+					displayName: 'Content Warning',
+					name: 'spoilerText',
+					type: 'string',
+					default: '',
+					description:
+						'Text to be shown as a warning or subject before the actual content',
+				},
 			],
 		} as INodeProperties,
 	],

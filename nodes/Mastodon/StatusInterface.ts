@@ -3,4 +3,5 @@ export interface IStatus {
 	sensitive?: boolean;
 	status: string;
 	in_reply_to_id?: string;
+	spoiler_text?: string;
 }
