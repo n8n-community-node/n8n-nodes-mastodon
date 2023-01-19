@@ -1,19 +1,19 @@
 {
-  "name": "n8n-nodes-mastodon-woofyio",
-  "version": "0.0.1",
+  "name": "n8n-nodes-mastodon",
+  "version": "0.0.3",
   "description": "Mastodon is a decentralized, open-source software that allows users to set up servers to communicate with each other. Fork from ETdoFresh with some added features",
   "keywords": [
     "n8n-community-node-package"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/woofyio/n8n-nodes-mastodon.git",
+  "homepage": "https://github.com/n8n-community-node/n8n-nodes-mastodon.git",
   "author": {
-    "name": "Jake Vis",
-    "email": "jakevis@outlook.com"
+    "name": "Community Effort!",
+    "email": "support@n8n.io"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/woofyio/n8n-nodes-mastodon.git"
+    "url": "https://github.com/n8n-community-node/n8n-nodes-mastodon.git"
   },
   "main": "index.js",
   "scripts": {
