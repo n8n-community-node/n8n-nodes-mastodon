@@ -34,7 +34,7 @@ export class MastodonOAuth2Api implements ICredentialType {
 			required: true,
 		},
 		{
-			displayName: 'Client ID',
+			displayName: 'Client Key',
 			name: 'clientId',
 			type: 'string',
 			default: '',
