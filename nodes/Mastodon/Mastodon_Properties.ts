@@ -144,6 +144,13 @@ export const properties = {
 					default: '',
 					description: 'The language of the status update',
 				},
+				{
+					displayName: 'Visibility',
+					name: 'visibility',
+					type: 'string',
+					default: 'public',
+					description: 'Visibility of this status (one of: public, unlisted, private, direct)',
+				},
 			],
 		} as INodeProperties,
 	],
