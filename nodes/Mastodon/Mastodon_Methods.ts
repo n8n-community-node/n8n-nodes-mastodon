@@ -67,6 +67,10 @@ export const methods = {
 			body.language = additionalFields.language as string;
 		}
 
+		if (additionalFields.visibility) {
+			body.visibility = additionalFields.visibility as string;
+		}
+
 		if (additionalFields.attachments) {
 			const attachments = additionalFields.attachments as string;
 

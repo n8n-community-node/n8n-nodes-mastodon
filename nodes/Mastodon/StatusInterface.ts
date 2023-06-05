@@ -5,4 +5,5 @@ export interface IStatus {
 	in_reply_to_id?: string;
 	spoiler_text?: string;
 	language?: string;
+	visibility?: string;
 }
