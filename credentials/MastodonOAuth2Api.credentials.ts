@@ -1,5 +1,10 @@
 import { ICredentialType, INodeProperties } from 'n8n-workflow';
 
+const scopes = [
+	'read',
+	'write',
+];
+
 export class MastodonOAuth2Api implements ICredentialType {
 	name = 'mastodonOAuth2Api';
 	extends = ['oAuth2Api'];
@@ -55,8 +60,8 @@ export class MastodonOAuth2Api implements ICredentialType {
 		{
 			displayName: 'Scope',
 			name: 'scope',
-			type: 'string',
-			default: 'write',
+			type: 'hidden',
+			default: scopes.join(' '),
 		},
 		{
 			displayName: 'Auth URI Query Parameters',
